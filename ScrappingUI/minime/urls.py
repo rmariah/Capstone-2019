@@ -8,7 +8,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
 #     url(r'^$', views.HomePageView),
-    url(r'^$', views.HomePageView.as_view()),
+    url(r'home/', views.HomePageView.as_view()),
 ] 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()
