@@ -4,7 +4,7 @@
  <style>
 
 body {
-	background-color: gray;
+/* 	background-color: gray; */
 }
 /* Style the links inside the navigation bar */
 .SearchBar {
@@ -15,7 +15,7 @@ body {
   width: 1300px;
   height: 50px;
 /*   position: fixed; */
-  background-color: black;
+/*   background-color: black; */
   top: 40%;
 /*   left: 50%; */
   margin-top: 100px;
@@ -32,7 +32,7 @@ a:hover {
 /* Style the search box inside the navigation bar */
 .SearchBar input[type=text] {
   float: left;
-  text-align: right;
+  text-align: left;
   padding: 6px;
   border: block;
   margin-top: 8px;
@@ -40,6 +40,7 @@ a:hover {
   margin-left: 16px;
   font-size: 17px;
   width: 1000px;
+  border-radius: 4px;
 }
 
 .SearchBar button {
@@ -49,6 +50,7 @@ a:hover {
 	margin-top: 8px;
 	margin-bottom: 8px;
 	margin-right: 100px;
+	border-radius: 8px;
 }
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
@@ -63,11 +65,12 @@ a:hover {
   }
   .SearchBar input[type=text] {
     border: 1px solid #ccc;
+    border-radius: 8px;
   }
 }
 
 h1 {
-	text-align: left;
+	text-align: center;
 	font-size: 32px;
 	font-family: sans-serif;
 }
@@ -82,27 +85,37 @@ h2 {
 	float: left;
 	margin-left: 10px;
 	margin-right: 10px;
-	border: 1px solid #ccc;
+	border: 1px ridge;
 	width: 45%;
 	margin-top: 125px;
 	text-align: center;
+}
+
+.articles {
+	border-style: ridge;
 }
 
 .TwitterResults {
 	float: right;
 	margin-right: 10px;
 	margin-left: 10px;
-	border: 1px solid #ccc;
+	border: 2px ridge;
 	width: 45%;
 	margin-top: 125px;
 	text-align: center;
+}
+
+.tweets {
+	border-style: ridge;
 }
  </style>
 
 <body>
 <h1> Welcome to Minime! </h1>
+<!-- 
 <h2> Instructions: you may search for any keyword you like and click search. Credited news articles
 and trending tweets will be displayed for the input. Enjoy! </h2>
+ -->
    
 <div class="SearchBar" id="center">
   	<input type="text" placeholder="Search.." />
@@ -111,10 +124,14 @@ and trending tweets will be displayed for the input. Enjoy! </h2>
 
 <div class="NewsResults" id="news">
 	<h3> News Articles </h3>
+	<div class="articles" >
+	</div>
 </div>
 
 <div class="TwitterResults" id="tweets">
 	<h3> Tweets </h3>
+	<div class="tweets">
+	</div>
 </div>
 </body>
 </html>
