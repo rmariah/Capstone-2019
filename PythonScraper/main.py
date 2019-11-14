@@ -4,14 +4,12 @@ from crawler import Crawler
 from domain import *
 from housekeeping import *
 
-DIRECTORY = 'ABC'
-HOMEPAGE = 'https://abcnews.go.com/'
-DOMAIN = get_domain(HOMEPAGE)
-TODO_FILE = DIRECTORY+'/todo.txt'
-COMPLETED_FILE = DIRECTORY+'/completed.txt'
+
+TODO_FILE = 'todo.txt'
+COMPLETED_FILE = 'completed.txt'
 NUMBER_OF_THREADS = 8
 queue = Queue()
-Crawler(DIRECTORY, HOMEPAGE, DOMAIN) #first crawler scrapes the homepage and exits cleanly
+Crawler() #first crawler scrapes the homepage and exits cleanly
 
 def create_threads(): #creates threads and tasks them with job function
     for _ in range(NUMBER_OF_THREADS):
@@ -28,7 +26,7 @@ def create_jobs():
 def job():
     while True: #endless loop so long as there is more in the queue
         url = queue.get()
-        Crawler.crawl(threading.current_thread().name, HOMEPAGE, url)
+        Crawler.crawl(threading.current_thread().name, get_domain(url), url)
         queue.task_done()
 
 def create_queue(): #takes the todo file and reads into the queue for threading
