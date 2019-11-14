@@ -1,137 +1,26 @@
-<!DOCTYPE html>
-<html>
- 
- <style>
+{% extends "base.html" %}
 
-body {
-/* 	background-color: gray; */
-}
-/* Style the links inside the navigation bar */
-.SearchBar {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  font-size: 17px;
-  width: 1300px;
-  height: 50px;
-/*   position: fixed; */
-/*   background-color: black; */
-  top: 40%;
-/*   left: 50%; */
-  margin-top: 100px;
-/*   margin-left: -500px; */
-}
+{% block content %}
+    <h1> Welcome to Minime! </h1>
+    <!--
+    <h2> Instructions: you may search for any keyword you like and click search. Credited news articles
+    and trending tweets will be displayed for the input. Enjoy! </h2>
+     -->
 
-/* Change the color of links on hover */
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    <div class="SearchBar" id="center">
+        <input type="text" placeholder="Search.." />
+        <button> Search! </button>
+    </div>
 
+    <div class="NewsResults" id="news">
+        <h3> News Articles </h3>
+        <div class="articles" >
+        </div>
+    </div>
 
-/* Style the search box inside the navigation bar */
-.SearchBar input[type=text] {
-  float: left;
-  text-align: left;
-  padding: 6px;
-  border: block;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  margin-left: 16px;
-  font-size: 17px;
-  width: 1000px;
-  border-radius: 4px;
-}
-
-.SearchBar button {
-	float: right;
-	padding: 6px;
-	font-size: 17px;
-	margin-top: 8px;
-	margin-bottom: 8px;
-	margin-right: 100px;
-	border-radius: 8px;
-}
-
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-@media screen and (max-width: 600px) {
-  .SearchBar a, .SearchBar input[type=text] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .SearchBar input[type=text] {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-}
-
-h1 {
-	text-align: center;
-	font-size: 32px;
-	font-family: sans-serif;
-}
-
-h2 {
-	text-align: left;
-	font-size: 20px;
-	font-family: cursive, sans-serif;
-}
-
-.NewsResults {
-	float: left;
-	margin-left: 10px;
-	margin-right: 10px;
-	border: 1px ridge;
-	width: 45%;
-	margin-top: 125px;
-	text-align: center;
-}
-
-.articles {
-	border-style: ridge;
-}
-
-.TwitterResults {
-	float: right;
-	margin-right: 10px;
-	margin-left: 10px;
-	border: 2px ridge;
-	width: 45%;
-	margin-top: 125px;
-	text-align: center;
-}
-
-.tweets {
-	border-style: ridge;
-}
- </style>
-
-<body>
-<h1> Welcome to Minime! </h1>
-<!-- 
-<h2> Instructions: you may search for any keyword you like and click search. Credited news articles
-and trending tweets will be displayed for the input. Enjoy! </h2>
- -->
-   
-<div class="SearchBar" id="center">
-  	<input type="text" placeholder="Search.." />
-	<button> Search! </button>
-</div>
-
-<div class="NewsResults" id="news">
-	<h3> News Articles </h3>
-	<div class="articles" >
-	</div>
-</div>
-
-<div class="TwitterResults" id="tweets">
-	<h3> Tweets </h3>
-	<div class="tweets">
-	</div>
-</div>
-</body>
-</html>
+    <div class="TwitterResults" id="tweets">
+        <h3> Tweets </h3>
+        <div class="tweets">
+        </div>
+    </div>
+{% endblock content %}
