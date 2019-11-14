@@ -1,14 +1,7 @@
-# howdy/urls.py
-from minime import views
-
-from django.conf import settings
-from django.conf.urls.static import static
+from . import views
 from django.conf.urls import url
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-#     url(r'^$', views.HomePageView),
     url(r'home/', views.HomePageView.as_view()),
-] 
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# urlpatterns += staticfiles_urlpatterns()
+    url('elastic/', views.Elastic.as_view()),
+]
