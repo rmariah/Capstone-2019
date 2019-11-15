@@ -25,8 +25,8 @@ from django.views.generic import RedirectView
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('accounts/', include('django.contrib.auth.urls')),
-    url('^$', RedirectView.as_view(url='accounts/login/')),
     url('', include('minime.urls')),
+    url('^$', RedirectView.as_view(url='accounts/login/')),
 ]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()
