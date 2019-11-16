@@ -7,5 +7,7 @@
         <input type="submit">
     </form>
 
-    {{ data }}
+    {% for x in data %}
+       {{ x }}<br><br>
+    {% endfor %}
 {% endblock content %}
