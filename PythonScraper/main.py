@@ -4,7 +4,7 @@ from crawler import Crawler
 from domain import *
 from housekeeping import *
 
-
+Dict = dict();
 TODO_FILE = 'todo.txt'
 COMPLETED_FILE = 'completed.txt'
 NUMBER_OF_THREADS = 8
@@ -26,7 +26,7 @@ def create_jobs():
 def job():
     while True: #endless loop so long as there is more in the queue
         url = queue.get()
-        Crawler.crawl(threading.current_thread().name, get_domain(url), url)
+        Crawler.crawl(threading.current_thread().name, get_domain(url), url, Dict)
         queue.task_done()
 
 def create_queue(): #takes the todo file and reads into the queue for threading
