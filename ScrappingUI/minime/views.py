@@ -34,15 +34,21 @@ def search(term):
     req_url = base_url + search_term + " *"
     data = requests.get(req_url).json()["hits"]["hits"]
     print(req_url)
+    
+    
     return cleanSearch(data)
 
 class HomePageView(View):
     def get(self, request, **kwargs):
         data = None
-        # data = requests.get('elastic.html').json()
+#         data = requests.get('elastic.html').json()
         # ignore above for now.
         return render(request, 'index.html', {"data": data})
 
+class UserAccount(View):
+	def get(self, request, **kwargs):
+		data = None
+		return render(request, 'useraccount.html', {"data":data})
 
 class Elastic(View):
     def get(self, request):
