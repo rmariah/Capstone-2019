@@ -1,14 +1,10 @@
-# howdy/urls.py
-from minime import views
-
-from django.conf import settings
-from django.conf.urls.static import static
+from . import views
 from django.conf.urls import url
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import RedirectView
 
 urlpatterns = [
-#     url(r'^$', views.HomePageView),
-    url(r'^$', views.HomePageView.as_view()),
-] 
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# urlpatterns += staticfiles_urlpatterns()
+    url(r'home/', views.HomePageView.as_view()),
+    url('elastic/', views.Elastic.as_view()),
+    url(r'useraccount/', views.UserAccount.as_view()),
+    url(r'accounts/logout/', RedirectView.as_view(url='accounts/logout/')),
+]

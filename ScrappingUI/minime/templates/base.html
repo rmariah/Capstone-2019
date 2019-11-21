@@ -1,0 +1,138 @@
+{% load staticfiles %}
+
+<style>
+.header {
+  padding: 60px;
+  text-align: center;
+  background: gray;
+  color: white;
+  font-size: 30px;
+  height: 50px;
+}
+
+h1 {
+	margin-top: 0px;
+	text-align: left;
+	font-size: 40px;
+}
+h2 {
+	margin-top: 0px;
+	text-align: right;
+	font-size: 17px;
+	margin-right: 100px;
+}
+
+.header button {
+	width: 10%;
+	margin-right: 10px;
+	margin-left: 10px;
+	font-size: 20px;
+	text-align: center;
+	background: black;
+	color: white;
+	border-radius: 4px;
+	float: right;
+}
+
+body {
+/* 	background-color: gray; */
+}
+/* Style the links inside the navigation bar */
+.SearchBar {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  width: 1300px;
+  height: 50px;
+/*   position: fixed; */
+/*   background-color: black; */
+  top: 40%;
+/*   left: 50%; */
+  margin-top: 100px;
+/*   margin-left: -500px; */
+}
+/* Change the color of links on hover */
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+/* Style the search box inside the navigation bar */
+.SearchBar input[type=text] {
+  float: left;
+  text-align: left;
+  padding: 6px;
+  border: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 16px;
+  font-size: 17px;
+  width: 1000px;
+  border-radius: 4px;
+}
+.SearchBar button {
+	float: right;
+	padding: 6px;
+	font-size: 17px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-right: 100px;
+	border-radius: 8px;
+}
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .SearchBar a, .SearchBar input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .SearchBar input[type=text] {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+}
+
+.NewsResults {
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px ridge;
+	width: 45%;
+	margin-top: 125px;
+	text-align: center;
+}
+.articles {
+	border-style: ridge;
+}
+.TwitterResults {
+	float: right;
+	margin-right: 10px;
+	margin-left: 10px;
+	border: 2px ridge;
+	width: 45%;
+	margin-top: 125px;
+	text-align: center;
+}
+.tweets {
+	border-style: ridge;
+}
+ </style>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mimime</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    </head>
+    <body>
+
+
+
+        {% block content %}{% endblock content %}
+    </body>
+</html>
