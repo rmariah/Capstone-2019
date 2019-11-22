@@ -20,7 +20,7 @@ def cleanSearch(data):
             },
             "text": x.get('text'),
             "id": x.get('id_str'),
-            "date": (datetime.strptime(x.get('created_at'), '%a %b %d %X %z %Y')).strftime("%b %d, %Y at %H:%M %p"),
+            "date": (datetime.strptime(x.get('created_at'), '%a %b %d %X %z %Y')).strftime("%b %d, %Y at %I:%M %p"),
             "favorites": x.get('retweet_count'),
             "retweets": x.get('favorite_count'),
         }
