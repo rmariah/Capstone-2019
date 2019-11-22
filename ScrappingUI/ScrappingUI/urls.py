@@ -27,6 +27,7 @@ urlpatterns = [
     url('accounts/', include('django.contrib.auth.urls')),
     url('', include('minime.urls')),
     url('^$', RedirectView.as_view(url='accounts/login/')),
+#     url(r'$/', RedirectView.as_view(url='accounts/logout/')),
 ]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()
