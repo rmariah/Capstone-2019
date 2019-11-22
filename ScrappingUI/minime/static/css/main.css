@@ -28,6 +28,7 @@
 
 .image_box {
     width: 20%;
+    margin-top:10px;
     float:left;
     text-decoration: none;
 }
@@ -50,18 +51,30 @@
 }
 
 .tweet {
+    background-color: #90A4AE;
+    margin-left:2.5%;
+    width:95%;
     margin-top: 10px;
+    float:left;
+    color:#212121;
+    border-radius:5px;
 }
 
 .date {
     font-size: 10px;
-    color:gray;
+    color:#424242;
 }
 
 .verified_icon {
     width:20px;
     height:20px;
     float:left;
+}
+
+.section_header {
+    font-weight: bold;
+    font-size: 36px;
+    margin:10px;
 }
 
 .header {
@@ -95,6 +108,7 @@ h2 {
 	float: right;
 }
 body {
+    font-family:Calibri;
 /* 	background-color: gray; */
 }
 /* Style the links inside the navigation bar */
@@ -119,16 +133,15 @@ a:hover {
 }
 /* Style the search box inside the navigation bar */
 .SearchBar input[type=text] {
-  float: left;
-  text-align: left;
-  padding: 6px;
-  border: block;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  margin-left: 16px;
-  font-size: 17px;
-  width: 1000px;
-  border-radius: 4px;
+    float: left;
+    text-align: left;
+    padding: 6px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 16px;
+    font-size: 17px;
+    width: 80%;
+    border-radius: 5px;
 }
 .SearchBar button {
 	float: right;
@@ -166,15 +179,19 @@ a:hover {
 .articles {
 	border-style: ridge;
 }
-.TwitterResults {
+.data_box {
 	float: right;
 	margin-right: 10px;
 	margin-left: 10px;
-	border: 2px ridge;
+	background-color: #B0BEC5;
 	width: 45%;
 	margin-top: 125px;
+    border-radius: 5px;
 	text-align: center;
 }
 .tweets {
-	border-style: ridge;
+    height:auto;
+    max-height: 800px;
+    overflow-y:scroll;
+    overflow-x: hidden;
 }
