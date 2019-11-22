@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 	<div class="header">
@@ -15,19 +16,49 @@
      -->
 
     <div class="SearchBar" id="center">
-        <input type="text" placeholder="Search.." />
-        <button> Search! </button>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search.." />
+            <button> Search! </button>
+        </form>
     </div>
 
     <div class="NewsResults" id="news">
         <h3> News Articles </h3>
-        <div class="articles" >
+        <div class="articles">
         </div>
     </div>
 
     <div class="TwitterResults" id="tweets">
         <h3> Tweets </h3>
         <div class="tweets">
+            {% for x in data %}
+                <div class="tweet">
+                    <a href="https://twitter.com/{{ x.user.handle }}" target="_blank">
+                        <div class="image_box">
+                            <img class="avatar" src="{{ x.user.profile_image }}">
+                        </div>
+                        <div class="user_info">
+                            <p class="username">{{ x.user.name }}</p>
+                            {% if x.user.verified == True %}
+                                <img class="verified_icon" src="/static/images/Verified.png">
+                            {% endif %}
+                            <br><br>
+                            <p class="handle">@{{ x.user.handle }}</p>
+                        </div>
+                    </a>
+                    <div class="user_info">
+                        <p class="followers">Followers: {{ x.user.followers }}</p>
+                    </div>
+                    <div class="textbox">
+                        <p class="tweet_text">{{ x.text }}</p>
+                        Retweets: {{ x.retweets }}  |  Favorites: {{ x.favorites }}
+                        <p class="date">{{ x.date }}</p>
+                    </div>
+                    <div style="width:100%; float:left"><hr></div>
+                    <br><br>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}
