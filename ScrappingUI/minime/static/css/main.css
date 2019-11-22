@@ -3,12 +3,16 @@
     font-weight: bold;
     font-size: 16px;
     margin: 5px;
+    color:black;
+    float:left;
 }
 
 .handle {
 	text-align: left;
     font-size: 12px;
     margin: 0px;
+    color:black;
+    float:none;
 }
 
 .followers {
@@ -22,14 +26,40 @@
     border-radius: 50%;
 }
 
-.imagebox {
+.image_box {
     width: 20%;
     float:left;
+    text-decoration: none;
 }
 
 .user_info {
     width: 40%;
     float:left;
+    text-decoration: none;
 }
 
+.textbox {
+    margin-left:5%;
+    width:90%;
+    text-align: left;
+    float: left;
+}
 
+.tweet_text {
+    font-size:14px;
+}
+
+.tweet {
+    margin-top: 10px;
+}
+
+.date {
+    font-size: 10px;
+    color:gray;
+}
+
+.verified_icon {
+    width:20px;
+    height:20px;
+    float:left;
+}
