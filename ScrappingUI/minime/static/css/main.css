@@ -1,0 +1,35 @@
+.username {
+	text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.handle {
+	text-align: left;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.followers {
+	text-align: left;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.avatar {
+    text-align: right;
+    border-radius: 50%;
+}
+
+.imagebox {
+    width: 20%;
+    float:left;
+}
+
+.user_info {
+    width: 40%;
+    float:left;
+}
+
+

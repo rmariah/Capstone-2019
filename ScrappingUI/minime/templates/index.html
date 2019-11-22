@@ -15,8 +15,11 @@
      -->
 
     <div class="SearchBar" id="center">
-        <input type="text" placeholder="Search.." />
-        <button> Search! </button>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search.." />
+            <button> Search! </button>
+        </form>
     </div>
 
     <div class="NewsResults" id="news">
@@ -28,6 +31,23 @@
     <div class="TwitterResults" id="tweets">
         <h3> Tweets </h3>
         <div class="tweets">
+            {% for x in data %}
+                <div class="imagebox">
+                    <img class="avatar" src="{{ x.user.profile_image }}">
+                </div>
+                <div class="user_info">
+                    <p class="username">{{ x.user.name }}</p>
+                    {% if x.user.verified == true %}
+                        do
+                    {% endif %}
+                    <p class="handle">@{{ x.user.handle }}</p>
+                </div>
+                <div class="user_info">
+                    <p class="followers">Followers: {{ x.user.followers }}</p>
+                </div>
+
+               {{ x }}<br><br>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}
