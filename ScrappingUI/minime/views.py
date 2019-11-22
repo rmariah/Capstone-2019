@@ -40,6 +40,9 @@ class HomePageView(View):
         # data = requests.get('elastic.html').json()
         # ignore above for now.
         return render(request, 'index.html', {"data": data})
+    def post(self, request):
+        data = search(request.POST["search"])
+        return render(request, "index.html", {"data": data})
 
 
 class Elastic(View):
