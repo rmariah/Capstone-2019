@@ -25,7 +25,21 @@
         <h3> Tweets </h3>
         <div class="tweets">
             {% for x in data %}
-                {{ x }}<br><br>
+                <div class="imagebox">
+                    <img class="avatar" src="{{ x.user.profile_image }}">
+                </div>
+                <div class="user_info">
+                    <p class="username">{{ x.user.name }}</p>
+                    {% if x.user.verified == true %}
+                        do
+                    {% endif %}
+                    <p class="handle">@{{ x.user.handle }}</p>
+                </div>
+                <div class="user_info">
+                    <p class="followers">Followers: {{ x.user.followers }}</p>
+                </div>
+
+               {{ x }}<br><br>
             {% endfor %}
         </div>
     </div>
