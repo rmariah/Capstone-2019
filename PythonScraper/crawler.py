@@ -1,62 +1,77 @@
-from urllib.request import urlopen
+from urllib3 import *
 from link_scraper import LinkScraper
 from housekeeping import *
+from domain import *
 
 class Crawler: #does the actual url crawling
     
-    #requires class variables that are shared among them for threading purposes
-    domain = 'go.com'
-    todo_f = 'ABC/todo.txt'
-    completed_f = 'ABC/completed.txt'
+    #requires class variables that are shared among them for threading purpose
+    domain = ''
+    todo_f = 'todo.txt'
+    completed_f = 'completed.txt'
     todo = set()
     completed = set()
     
-    def __init__(self, directory, base_url, domain):
-        self.directory = directory
-        self.base_url = base_url
-        self.domain = domain
-        self.start(directory, base_url)
-        self.crawl("1st crawler", base_url, base_url)
+    def __init__(self):
+        self.start()
     
     @staticmethod
-    def start(directory, base_url): #the initial Crawler has to produce the necessary files, and future crawlers must read in the todo and completed
-        make_dir(directory);
-        create_files(directory, base_url)
+    def start(): #the initial Crawler has to produce the necessary files, and future crawlers must read in the todo and completed
+        create_files()
         Crawler.todo = load_file(Crawler.todo_f)
         Crawler.completed = load_file(Crawler.completed_f)
 
     @staticmethod
-    def crawl(thread_name, base_url, page):
+    def crawl(thread_name, domain, page, Dict):
+        if (page[0]=="/"):
+            Crawler.todo.remove(page)
+            if (page[1]=="/"):
+                page = "https:"+page
+            else:
+                page = domain + page
+            Crawler.todo.add(page)
+        if not page[0]=='h':
+            page = ''
         if page not in Crawler.completed:
             print(thread_name + ' crawling '+page)
             print('Queued links: ' + str(len(Crawler.todo))+'|| Completed: '+ str(len(Crawler.completed)))
-            Crawler.add_todo(Crawler.find_urls(base_url, page))
-            Crawler.todo.remove(page)
+            if (not domain in Dict):
+                Dict[domain]=0
+            file_name = domain + "_" +str(Dict[domain])+".html"
+            Dict[domain] = Dict[domain]+1
+            Crawler.add_todo(Crawler.find_urls(domain, page, file_name, Dict), domain)
+            if(page!=''):
+                Crawler.todo.remove(page)
             Crawler.completed.add(page)
             Crawler.update()
 
     @staticmethod
-    def add_todo(links):
+    def add_todo(links, domain):
         for url in links:
             if url in Crawler.todo:
                 continue
             if url in Crawler.completed:
                 continue
-            if Crawler.domain not in url:
+            if domain not in url:
                 continue
             Crawler.todo.add(url)
 
     @staticmethod
-    def find_urls(base_url, page):
+    def find_urls(domain, page, file_name, Dict):
         html_string = ''
         try:
-            response = urlopen(page)
-            html_bytes = response.read()
+            https = PoolManager()
+            response = https.request('GET', page)
+            html_bytes = response.data
             html_string = html_bytes.decode('utf-8')
-            scraper = LinkScraper(base_url, page)
+            f = open("HTML/"+file_name, 'wb')
+            f.write(html_bytes)
+            f.close()
+            scraper = LinkScraper(domain, page)
             scraper.feed(html_string)
         except:
-            print('Error, can not crawl page')
+            print('Error, page crawled/inaccessible')
+            Dict[domain]-=1
             return set()
         return scraper.pages()
 

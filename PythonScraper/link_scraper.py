@@ -1,5 +1,4 @@
 from html.parser import HTMLParser
-from urllib import parse
 
 class LinkScraper(HTMLParser): #overwriting some of HTMLParsers methods for specific functionality in finding URLs
 
@@ -13,9 +12,10 @@ class LinkScraper(HTMLParser): #overwriting some of HTMLParsers methods for spec
         if tag == 'a':
             for (attr,value) in attrs:
                 if attr == 'href':
-                    url = parse.urljoin(self.base_url, value) #if full url, do nothing, else attach base url to value
-                    self.links.add(url)
-    
+                    if(value!=None):
+                        self.links.add(value)
+        
+        
     def pages(self):
         return self.links
 

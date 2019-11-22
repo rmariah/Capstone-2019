@@ -7,11 +7,13 @@ def make_dir(directory): #makes a folder for the site being scraped
     else:
         os.makedirs(directory)
 
-def create_files(directory, base_url): #creating files to save progress of the scraper as needed
-    if not os.path.isfile(directory+'/todo.txt'):
-        write_file(directory+"/todo.txt", base_url)
-    if not os.path.isfile(directory+'/completed.txt'):
-        write_file(directory+'/completed.txt', '')
+def create_files(): #creating files to save progress of the scraper as needed
+    if not os.path.isfile('todo.txt'):
+        write_file('todo.txt', 'https://www.foxnews.com\nhttps://www.msnbc.com\n')
+    if not os.path.isfile('completed.txt'):
+        write_file('completed.txt', '')
+    if not os.path.isdir('HTML'):
+        make_dir('HTML')
 
 def write_file(file, data): #write to the file
     f = open(file, 'w')
