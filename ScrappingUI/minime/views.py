@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 import requests
 import elasticsearch
+from django.contrib.auth import logout
 
 
 def cleanSearch(data):
@@ -34,6 +35,8 @@ def search(term):
     data = es.search(index="filebeat-7.4.2-2019.11.13-000001", body=search_obj)["hits"]["hits"]
     return cleanSearch(data)
 
+def logout_view(request):
+    logout(request)
 
 class HomePageView(View):
     def get(self, request, **kwargs):
