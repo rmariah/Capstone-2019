@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <style>
+    body{
+        background-image: url("https://d1wmhwtkksj55o.cloudfront.net/wp-content/uploads/2015/09/shutterstock_189974771.jpg");
+        background-repeat: no-repeat;
+        background-size: auto;
+    }
+</style>
+
     <form method="post">
         {% csrf_token %}
         <input type="text" name="search"><br/>
