@@ -24,13 +24,13 @@
     </div>
 
     <div class="NewsResults" id="news">
-        <h3> News Articles </h3>
+        <p class="section_header"> News </p>
         <div class="articles">
         </div>
     </div>
-`
-    <div class="TwitterResults" id="tweets">
-        <h3> Tweets </h3>
+
+    <div class="data_box" id="tweets">
+        <p class="section_header"> Tweets </p>
         <div class="tweets">
             {% for x in data %}
                 <div class="tweet">
@@ -55,8 +55,7 @@
                         Retweets: {{ x.retweets }}  |  Favorites: {{ x.favorites }}
                         <p class="date">{{ x.date }}</p>
                     </div>
-                    <div style="width:100%; float:left"><hr></div>
-                    <br><br>
+                    <br>
                 </div>
             {% endfor %}
         </div>
