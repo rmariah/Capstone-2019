@@ -8,5 +8,5 @@ urlpatterns = [
     url('elastic/', views.Elastic.as_view()),
     url(r'useraccount/', views.UserAccount.as_view()),
     url('accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/logout/', RedirectView.as_view(url='accounts/login/')),
+    url(r'accounts/logout/', RedirectView.as_view(url='accounts/login/')),
 ]

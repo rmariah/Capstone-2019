@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 # from django.urls import path, include
+from . import views
 
 from django.conf.urls import include, url
 from django.conf import settings
@@ -26,7 +27,10 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('accounts/', include('django.contrib.auth.urls')),
     url('', include('minime.urls')),
-    url('^$', RedirectView.as_view(url='accounts/login/')),
+    url('^$', RedirectView.as_view(url='main')),
+    url('main', views.Main.as_view()),
+    url('accounts/login', RedirectView.as_view(url='accounts/login')),
+    url('signup', RedirectView.as_view(url='signup')),
 ]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()

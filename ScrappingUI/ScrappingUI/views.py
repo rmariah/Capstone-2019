@@ -55,7 +55,7 @@ class UserAccount(View):
 class Main(View):
     def get(self, request, **kwargs):
         data = None
-        return render(request, 'main.html', {"data":data})
+        return render(request, 'registration/main.html', {"data":data})
 
 class SignUp(View):
     def get(self, request, **kwargs):
@@ -69,4 +69,3 @@ class Elastic(View):
     def post(self, request):
         data = search(request.POST["search"])
         return render(request, "elastic.html", {"data": data})
-
