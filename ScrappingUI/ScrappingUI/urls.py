@@ -30,7 +30,7 @@ urlpatterns = [
     url('^$', RedirectView.as_view(url='main')),
     url('main', views.Main.as_view()),
     url('accounts/login', RedirectView.as_view(url='accounts/login')),
-    url('signup', RedirectView.as_view(url='signup')),
+    url('signup', views.SignUp.as_view()),
 ]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()

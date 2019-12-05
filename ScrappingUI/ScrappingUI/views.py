@@ -60,7 +60,7 @@ class Main(View):
 class SignUp(View):
     def get(self, request, **kwargs):
         data = None
-        return render(request, 'signup.html', {"data":data})
+        return render(request, 'registration/signup.html', {"data":data})
 
 class Elastic(View):
     def get(self, request):
