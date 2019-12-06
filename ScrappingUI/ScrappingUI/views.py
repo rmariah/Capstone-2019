@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+import random
 
 
 def cleanSearch(data):
@@ -38,12 +39,18 @@ def search(term):
     data = es.search(index="filebeat-7.4.2-2019.11.13-000001", body=search_obj)["hits"]["hits"]
     return cleanSearch(data)
 
+
+def chooseRandom():
+    topics = ["school", "uwm", "university of wisconsin-milwaukee", "capstone", "university", "wisconsin", "milwaukee"]
+    return search(random.choice(topics))
+
+
 class HomePageView(View):
     def get(self, request, **kwargs):
         data = None
 #         data = requests.get('elastic.html').json()
         # ignore above for now.
-        return render(request, 'index.html', {"data": data})
+        return render(request, 'index.html', {"data": chooseRandom()})
 
     def post(self, request):
         data = search(request.POST["search"])
@@ -55,16 +62,18 @@ class UserAccount(View):
         data = None
         return render(request, 'useraccount.html', {"data":data})
 
+
 class Main(View):
     def get(self, request, **kwargs):
         data = None
 #         data = requests.get('elastic.html').json()
         # ignore above for now.
-        return render(request, 'registration/main.html', {"data": data})
+        return render(request, 'registration/main.html', {"data": chooseRandom()})
 
     def post(self, request):
         data = search(request.POST["search"])
         return render(request, "regristration/main.html", {"data": data})
+
 
 def signup(request):
     if request.method == 'POST':
@@ -80,10 +89,12 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
+
 
 class Elastic(View):
     def get(self, request):

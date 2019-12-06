@@ -3,6 +3,7 @@ from django.views import View
 import requests
 import elasticsearch
 from datetime import datetime
+import random
 
 
 def cleanSearch(data):
@@ -34,12 +35,15 @@ def search(term):
     data = es.search(index="filebeat-7.4.2-2019.11.13-000001", body=search_obj)["hits"]["hits"]
     return cleanSearch(data)
 
+
+def chooseRandom():
+    topics = ["school", "uwm", "university of wisconsin-milwaukee", "capstone", "university", "wisconsin", "milwaukee"]
+    return search(random.choice(topics))
+
+
 class HomePageView(View):
     def get(self, request, **kwargs):
-        data = None
-#         data = requests.get('elastic.html').json()
-        # ignore above for now.
-        return render(request, 'index.html', {"data": data})
+        return render(request, 'index.html', {"data": chooseRandom()})
 
     def post(self, request):
         data = search(request.POST["search"])
