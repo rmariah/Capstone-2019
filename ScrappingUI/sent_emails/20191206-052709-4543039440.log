@@ -1,0 +1,13 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: ryan34@uwm.edu
+Date: Fri, 06 Dec 2019 05:27:09 -0000
+Message-ID: 
+ <157561002972.88580.8191284943991465299@my-computer.eau.wi.charter.com>
+
+Someone asked for password reset for email ryan34@uwm.edu. Follow the link below:
+http://127.0.0.1:8000/accounts/reset/Mg/5c1-00d849e646442131689a/
+-------------------------------------------------------------------------------

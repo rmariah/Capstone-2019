@@ -1,5 +1,45 @@
 {% extends "registration/general.html" %}
 {% load static %}
 {% block content %}
-<p> Hi! </p>
+<form method="post">
+        {% csrf_token %}
+    </form>
+
+<div class="NewsResults" id="news">
+        <p class="section_header"> News </p>
+        <div class="articles">
+        </div>
+    </div>
+
+    <div class="data_box" id="tweets">
+        <p class="section_header"> Tweets </p>
+        <div class="tweets">
+            {% for x in data %}
+                <div class="tweet">
+                    <a href="https://twitter.com/{{ x.user.handle }}" target="_blank">
+                        <div class="image_box">
+                            <img class="avatar" src="{{ x.user.profile_image }}">
+                        </div>
+                        <div class="user_info">
+                            <p class="username">{{ x.user.name }}</p>
+                            {% if x.user.verified == True %}
+                                <img class="verified_icon" src="/static/images/Verified.png">
+                            {% endif %}
+                            <br><br>
+                            <p class="handle">@{{ x.user.handle }}</p>
+                        </div>
+                    </a>
+                    <div class="user_info">
+                        <p class="followers">Followers: {{ x.user.followers }}</p>
+                    </div>
+                    <div class="textbox">
+                        <p class="tweet_text">{{ x.text }}</p>
+                        Retweets: {{ x.retweets }}  |  Favorites: {{ x.favorites }}
+                        <p class="date">{{ x.date }}</p>
+                    </div>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

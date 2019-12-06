@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.views import View
+from django.views import View, generic
 import requests
 import elasticsearch
 from datetime import datetime
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 
 
 def cleanSearch(data):
@@ -34,7 +38,6 @@ def search(term):
     data = es.search(index="filebeat-7.4.2-2019.11.13-000001", body=search_obj)["hits"]["hits"]
     return cleanSearch(data)
 
-
 class HomePageView(View):
     def get(self, request, **kwargs):
         data = None
@@ -55,12 +58,32 @@ class UserAccount(View):
 class Main(View):
     def get(self, request, **kwargs):
         data = None
-        return render(request, 'registration/main.html', {"data":data})
+#         data = requests.get('elastic.html').json()
+        # ignore above for now.
+        return render(request, 'registration/main.html', {"data": data})
 
-class SignUp(View):
-    def get(self, request, **kwargs):
-        data = None
-        return render(request, 'registration/signup.html', {"data":data})
+    def post(self, request):
+        data = search(request.POST["search"])
+        return render(request, "regristration/main.html", {"data": data})
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('index')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
 
 class Elastic(View):
     def get(self, request):

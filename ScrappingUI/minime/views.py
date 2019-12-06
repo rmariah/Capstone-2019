@@ -52,16 +52,6 @@ class UserAccount(View):
         data = None
         return render(request, 'useraccount.html', {"data":data})
 
-class Main(View):
-    def get(self, request, **kwargs):
-        data = None
-        return render(request, 'main.html', {"data":data})
-
-class SignUp(View):
-    def get(self, request, **kwargs):
-        data = None
-        return render(request, 'signup.html', {"data":data})
-
 class Elastic(View):
     def get(self, request):
         return render(request, "elastic.html")

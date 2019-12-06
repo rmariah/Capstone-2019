@@ -25,12 +25,12 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('accounts/', include('django.contrib.auth.urls')),
-    url('', include('minime.urls')),
-    url('^$', RedirectView.as_view(url='main')),
-    url('main', views.Main.as_view()),
-    url('accounts/login', RedirectView.as_view(url='accounts/login')),
-    url('signup', views.SignUp.as_view()),
+    url(r'accounts/', include('django.contrib.auth.urls')),
+    url(r'', include('minime.urls')),
+    url(r'^$', RedirectView.as_view(url='main')),
+    url(r'main', views.Main.as_view()),
+    url(r'accounts/login', RedirectView.as_view(url='accounts/login')),
+    url(r'signup', views.SignUp.as_view()),
 ]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()
