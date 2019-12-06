@@ -34,7 +34,6 @@ def search(term):
     data = es.search(index="filebeat-7.4.2-2019.11.13-000001", body=search_obj)["hits"]["hits"]
     return cleanSearch(data)
 
-
 class HomePageView(View):
     def get(self, request, **kwargs):
         data = None
@@ -46,11 +45,20 @@ class HomePageView(View):
         data = search(request.POST["search"])
         return render(request, "index.html", {"data": data})
 
-
 class UserAccount(View):
     def get(self, request, **kwargs):
         data = None
         return render(request, 'useraccount.html', {"data":data})
+
+class Main(View):
+    def get(self, request, **kwargs):
+        data = None
+        return render(request, 'main.html', {"data":data})
+
+class SignUp(View):
+    def get(self, request, **kwargs):
+        data = None
+        return render(request, 'signup.html', {"data":data})
 
 class Elastic(View):
     def get(self, request):
