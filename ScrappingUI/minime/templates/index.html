@@ -4,13 +4,16 @@
 {% block content %}
 
 
-    <div class="SearchBar" id="center">
-        <form method="post">
-            {% csrf_token %}
-            <input type="text" name="search" placeholder="Search.." />
-            <button> Search! </button>
-        </form>
+    <div class="search">
+        <div class="SearchBar" id="center">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="search" placeholder="Search.." />
+                <button> Go! </button>
+            </form>
+        </div>
     </div>
+
 
     <div class="newsdata_box" id="news">
         <p class="section_header"> News </p>

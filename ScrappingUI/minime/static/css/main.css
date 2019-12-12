@@ -47,7 +47,7 @@
 }
 
 .tweet_text {
-    font-size:14px;
+    font-size:16px;
 }
 
 .tweet {
@@ -78,95 +78,69 @@
 }
 
 .header {
-  padding: 60px;
+  padding: 20px;
   text-align: center;
-  background: gray;
-  color: white;
+  background-color: #B0BEC5;
   font-size: 30px;
-  height: 50px;
+  height: 65px;
 }
-h1 {
+
+.title{
 	margin-top: 0px;
 	text-align: left;
-	font-size: 40px;
+	font-size: 60px;
+    float:left;
 }
-h2 {
-	margin-top: 0px;
-	text-align: right;
-	font-size: 17px;
-	margin-right: 100px;
-}
-.header button {
-	width: 10%;
-	margin-right: 10px;
-	margin-left: 10px;
-	font-size: 20px;
-	text-align: center;
-	background: black;
-	color: white;
-	border-radius: 4px;
-	float: right;
-}
+
 body {
     font-family:Calibri;
-/* 	background-color: gray; */
+    background-color: #CFD8DC;
 }
-/* Style the links inside the navigation bar */
+
 .SearchBar {
   display: block;
   text-align: center;
   text-decoration: none;
-  font-size: 17px;
-  width: 1300px;
-  height: 50px;
-/*   position: fixed; */
-/*   background-color: black; */
-  top: 40%;
-/*   left: 50%; */
-  margin-top: 100px;
-/*   margin-left: -500px; */
 }
-/* Change the color of links on hover */
+
 a:hover {
-  background-color: #ddd;
-  color: black;
+    background-color: #ddd;
+    color: black;
 }
-/* Style the search box inside the navigation bar */
-.SearchBar input[type=text] {
-    float: left;
-    text-align: left;
-    padding: 6px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 16px;
-    font-size: 17px;
-    width: 80%;
+
+.search {
+    margin: auto;
+    background-color: #B0BEC5;
     border-radius: 5px;
+    width: 60%;
+    margin-top: 20px;
+    height: 100px;
+    font-family:Calibri !important;
+}
+
+.SearchBar input[type=text] {
+    margin:auto;
+    text-align: left;
+    margin-top:20px;
+    font-size: 30px;
+    width: 80%;
+    height:50px;
+    border-radius: 5px;
+    background-color: #90A4AE;
+    border-color: #78909C;
 }
 .SearchBar button {
-	float: right;
-	padding: 6px;
-	font-size: 17px;
-	margin-top: 8px;
-	margin-bottom: 8px;
-	margin-right: 100px;
-	border-radius: 8px;
+    margin:auto;
+	font-size: 18px;
+	width: 10%;
+    height:50px;
+	border-radius: 5px;
+    font-weight: bold;
+    margin-left:10px;
+    background-color: #546E7A;
+    border-color: #455A64;
 }
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-@media screen and (max-width: 600px) {
-  .SearchBar a, .SearchBar input[type=text] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .SearchBar input[type=text] {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-}
+
 .NewsResults {
 	float: left;
 	margin-left: 10px;
@@ -183,7 +157,7 @@ a:hover {
 	background-color: #B0BEC5;
 	width: 38%;
     margin-bottom:20px;
-	margin-top: 125px;
+	margin-top: 15px;
     border-radius: 5px;
 	text-align: center;
 }
@@ -193,7 +167,7 @@ a:hover {
 	background-color: #B0BEC5;
     margin-bottom:20px;
 	width: 38%;
-	margin-top: 125px;
+	margin-top: 15px;
     border-radius: 5px;
 	text-align: center;
 }
@@ -202,6 +176,7 @@ a:hover {
     max-height: 800px;
     overflow-y:scroll;
     overflow-x: hidden;
+    margin-bottom: 10px;
 }
 
 .articles {
@@ -209,10 +184,12 @@ a:hover {
     max-height: 800px;
     overflow-y:scroll;
     overflow-x: hidden;
+    margin-bottom: 10px;
 }
 
 .full-link{
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
     color:#212121 !important;
     width: 100%;
     text-align: center !important;
@@ -232,8 +209,25 @@ a:hover {
 .news_title {
 	text-align: left;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 22px;
     margin: 5px;
     color:black;
     float:left;
+}
+
+.navbutton {
+    box-sizing:border-box;
+    font-size:16px;
+    height:64px;
+    line-height:24px;
+    cursor:pointer;
+    text-align:center;
+    width: 125px;
+    margin-right: 10px;
+	margin-left: 10px;
+	border-radius: 4px;
+    border-width: 0px;
+	float: right;
+    font-weight: bold;
+    background-color: #78909C;
 }
