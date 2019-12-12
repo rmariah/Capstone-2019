@@ -102,6 +102,10 @@ class Main(View):
 
     def post(self, request):
         news, tweets = searchNews(request.POST["search"]), searchTweets(request.POST["search"])
+        if not news:
+            news = None
+        if not tweets:
+            tweets = None
         return render(request, 'index.html', {"tweets": tweets, "news": news})
 
 

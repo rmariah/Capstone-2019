@@ -82,6 +82,10 @@ class HomePageView(View):
 
     def post(self, request):
         news, tweets = searchNews(request.POST["search"]), searchTweets(request.POST["search"])
+        if not news:
+            news = None
+        if not tweets:
+            tweets = None
         return render(request, 'index.html', {"tweets": tweets, "news": news})
 
 class UserAccount(View):
@@ -91,8 +95,17 @@ class UserAccount(View):
 
 class Main(View):
     def get(self, request, **kwargs):
-        data = None
-        return render(request, 'main.html', {"data":data})
+        topic = chooseRandom()
+        news, tweets = searchNews(topic), searchTweets(topic)
+        return render(request, 'index.html', {"tweets": tweets, "news": news})
+
+    def post(self, request):
+        news, tweets = searchNews(request.POST["search"]), searchTweets(request.POST["search"])
+        if not news:
+            news = None
+        if not tweets:
+            tweets = None
+        return render(request, 'index.html', {"tweets": tweets, "news": news})
 
 class SignUp(View):
     def get(self, request, **kwargs):
