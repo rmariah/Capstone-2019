@@ -1,20 +1,43 @@
-{% extends "registration/general.html" %}
+{% extends "base.html" %}
 {% load static %}
-{% block content %}
-<form method="post">
-        {% csrf_token %}
-    </form>
 
-<div class="NewsResults" id="news">
+{% block content %}
+
+
+    <div class="SearchBar" id="center">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search.." />
+            <button> Search! </button>
+        </form>
+    </div>
+
+    <div class="newsdata_box" id="news">
         <p class="section_header"> News </p>
         <div class="articles">
+            {% for x in news %}
+                <div class="tweet">
+                    <div class="image_box">
+                        <img class="news-logo" src="{{ x.logo }}">
+                    </div>
+                    <div class="news_info">
+                        <p class="news_title">{{ x.title }}</p>
+                    </div>
+                    <div class="textbox">
+                        <p class="tweet_text">{{ x.summary |safe }}</p>
+                        <p class="date">{{ x.date }}</p>
+                        <a style="text-decoration: none" href="{{ x.link }}" target="_blank"><p class="full-link">Read full article</p></a>
+                    </div>
+                    <br>
+                </div>
+            {% endfor %}
         </div>
     </div>
 
-    <div class="data_box" id="tweets">
+    <div class="tweetdata_box" id="tweets">
         <p class="section_header"> Tweets </p>
         <div class="tweets">
-            {% for x in data %}
+            {% for x in tweets %}
                 <div class="tweet">
                     <a href="https://twitter.com/{{ x.user.handle }}" target="_blank">
                         <div class="image_box">
@@ -36,11 +59,11 @@
                         <p class="tweet_text">{{ x.text }}</p>
                         Retweets: {{ x.retweets }}  |  Favorites: {{ x.favorites }}
                         <p class="date">{{ x.date }}</p>
+                        <a style="text-decoration: none" href="https://twitter.com/{{ x.user.name }}/status/{{ x.id }}" target="_blank"><p class="full-link">See full tweet</p></a>
                     </div>
-                    <br>
+                    <br><br>
                 </div>
             {% endfor %}
         </div>
     </div>
-    <br><br>
 {% endblock content %}
